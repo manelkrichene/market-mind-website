@@ -8,7 +8,7 @@ A responsive, animated editorial website concept for Market Mind Strategic Marke
 - `script.js` — mobile navigation, reveal animations, subtle hero parallax, configurable product CTA
 - `site-config.js` — easy edits for contact email, phone, product price, currency and Converty checkout URL
 - `assets/market-mind-logo.png` — official supplied Market Mind logo
-- `assets/Cover page.jpg` — current e-book cover used in the website
+- `assets/cover-page.jpg` — current e-book cover used in the website
 - `assets/favicon.svg` — small site icon
 - `api/converty/callback.js` — placeholder only, not an active OAuth integration
 
