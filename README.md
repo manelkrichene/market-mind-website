@@ -13,7 +13,7 @@ Keep the existing Worker, public URL, repository integration and production bran
 - work/: selected case studies and illustrative frameworks
 - insights/: library and long-form research/strategy articles
 - playbook/: digital product landing page
-- lead-magnet/index.html: Chapter One request form and post-submission download flow
+- lead-magnet/index.html: Chapter One landing page linking to the free Gumroad product
 - site-config.js: email, social, booking, contact form and checkout settings
 - styles.css / script.js: responsive styling, scroll-led motion, reduced-motion support and form interactions
 - privacy.html, terms.html, disclaimer.html: website policies and information notices
@@ -37,23 +37,19 @@ site-config.js sets bookingUrl to https://calendly.com/krichenem. Verify the Cal
 ## Email field notes
 The “Subscribe by email” CTA opens a prefilled email draft to krichenem@gmail.com. This is a manual opt-in workflow, not an automated newsletter list. Do not describe it as an automated newsletter until a mailing-list provider, consent records and unsubscribe mechanism are configured.
 
-## Free chapter lead magnet
-The lead-magnet form collects name, email and company/project through Formspree. Marketing consent is optional and unchecked by default. On a successful submission, the page reveals a download link expected at:
+## Free chapter
+The landing page at `/lead-magnet/index.html` links directly to the free Gumroad product:
 
-/assets/market-mind-chapter-one.pdf
+https://krichen7.gumroad.com/l/smdae
 
-IMPORTANT SECURITY LIMITATION: a PDF stored in GitHub under assets/ and deployed as a static asset is publicly accessible to anyone who knows or discovers its URL. Hiding the link until a form is submitted is only a soft gate, not secure file protection. If access control is important, do not put the final PDF in the public assets/ folder. Use a private Cloudflare R2 bucket and a Worker endpoint that issues short-lived signed download links; this requires an R2 binding and a server-side signing secret in the Cloudflare deployment. The current implementation does not claim to provide that stronger protection.
+Gumroad handles the resource-claim and download experience. The website does not collect personal information through a lead-magnet form, and the PDF is not stored in the public GitHub assets folder. Confirm the Gumroad product is published as free and test the claim/download flow before promoting it.
 
 ## Digital playbook payment
-The intended product is “Market Mind™ | Launch Before You Stock” at $40 USD as a one-time purchase. Gumroad is the selected provider, but the checkout URL is intentionally blank. The URL supplied so far is a generic checkout route and does not clearly identify this product.
+The intended product is “Market Mind™ | Launch Before You Stock” at $40 USD as a one-time purchase. The product-specific URL is configured in `site-config.js` as `purchaseUrl`:
 
-1. Create/configure the product in Gumroad with the final price and accurate product description.
-2. Upload the actual customer-ready playbook PDF and configure digital delivery.
-3. Copy the permanent product-specific URL from the Gumroad product dashboard/share area.
-4. Set purchaseUrl in site-config.js to that URL.
-5. Test checkout, receipt, file delivery and the buyer experience before promoting it as live.
+https://krichen7.gumroad.com/l/marketmind
 
-The cover image in assets/ is not the actual product deliverable. No payment is collected from this site while purchaseUrl is blank.
+Confirm the final price, upload the customer-ready playbook PDF, configure delivery, and test checkout, receipt, file delivery and the buyer experience before promoting the paid product as live. The cover image in `assets/` is not the actual product deliverable.
 
 ## Case study integrity
 The matcha case describes a research question and methods, not unverified conclusions. The B2B engagement is anonymized. The launch-validation page is labelled as an illustrative framework. The portfolio includes fictional brand concepts and projected figures; do not present these as real client outcomes. Publish testimonials only when they are genuine, approved and attributable as agreed.
