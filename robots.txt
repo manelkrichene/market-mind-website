@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://market-mind-website.krichenem.workers.dev/sitemap.xml
-Disallow: /lead-magnet/thank-you.html
-Disallow: /assets/market-mind-chapter-one.pdf
