@@ -13,5 +13,6 @@ window.MARKET_MIND_CONFIG = {
   productPrice: 40,
   currency: "USD",
   paymentProvider: "Gumroad",
+  freeChapterUrl: "https://krichen7.gumroad.com/l/smdae",
   purchaseUrl: "https://krichen7.gumroad.com/l/marketmind"
 };
