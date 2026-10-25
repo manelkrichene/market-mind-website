@@ -38,11 +38,11 @@ site-config.js sets bookingUrl to https://calendly.com/krichenem. Verify the Cal
 The “Subscribe by email” CTA opens a prefilled email draft to krichenem@gmail.com. This is a manual opt-in workflow, not an automated newsletter list. Do not describe it as an automated newsletter until a mailing-list provider, consent records and unsubscribe mechanism are configured.
 
 ## Free chapter
-The landing page at `/lead-magnet/index.html` links directly to the free Gumroad product:
+The landing page at `/lead-magnet/index.html` collects the visitor’s name and email, plus an optional company/project name, through Formspree. Optional marketing consent is separate and unchecked by default. Only after Formspree confirms successful submission does the page reveal the Gumroad claim button:
 
 https://krichen7.gumroad.com/l/smdae
 
-Gumroad handles the resource-claim and download experience. The website does not collect personal information through a lead-magnet form, and the PDF is not stored in the public GitHub assets folder. Confirm the Gumroad product is published as free and test the claim/download flow before promoting it.
+Gumroad handles the resource claim and download. The PDF is not stored in the public GitHub assets folder. Confirm the Formspree form is active and the Gumroad product is free, then test both a successful submission and a failure state before promoting the flow.
 
 ## Digital playbook payment
 The intended product is “Market Mind™ | Launch Before You Stock” at $40 USD as a one-time purchase. The product-specific URL is configured in `site-config.js` as `purchaseUrl`:
