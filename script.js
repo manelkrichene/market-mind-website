@@ -1,89 +1,18 @@
-(() => {
-  const config = window.MARKET_MIND_CONFIG || {};
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const nav = document.querySelector(".nav");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const year = document.getElementById("current-year");
-  if (year) year.textContent = new Date().getFullYear();
-
-  if (menuToggle && nav) {
-    menuToggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("is-open");
-      menuToggle.setAttribute("aria-expanded", String(open));
-      menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-      document.body.classList.toggle("nav-open", open);
-    });
-    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation");
-      document.body.classList.remove("nav-open");
-    }));
-  }
-
-  // Reveal content only when it enters the viewport; respect reduced-motion preferences.
-  const revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !reducedMotion) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -28px 0px" });
-    revealEls.forEach((el) => revealObserver.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add("is-visible"));
-  }
-
-  // Gentle hero parallax on pointer devices; disabled on touch or reduced-motion devices.
-  const heroArt = document.querySelector(".hero-art");
-  if (heroArt && !reducedMotion && window.matchMedia("(pointer:fine)").matches) {
-    heroArt.addEventListener("pointermove", (event) => {
-      const rect = heroArt.getBoundingClientRect();
-      const dx = ((event.clientX - rect.left) / rect.width - 0.5) * 7;
-      const dy = ((event.clientY - rect.top) / rect.height - 0.5) * 7;
-      heroArt.style.setProperty("--px", `${dx}px`);
-      heroArt.style.setProperty("--py", `${dy}px`);
-    });
-    heroArt.addEventListener("pointerleave", () => {
-      heroArt.style.setProperty("--px", "0px");
-      heroArt.style.setProperty("--py", "0px");
-    });
-  }
-
-  // Make the purchase destination editable in site-config.js. Never simulate a checkout.
-  const buyButton = document.getElementById("buy-playbook");
-  const checkoutNote = document.getElementById("checkout-note");
-  if (buyButton) {
-    const price = Number(config.productPrice || 40);
-    const currency = config.currency || "USD";
-    const productName = config.productName || "Market Mind™ | Launch Before You Stock";
-    buyButton.setAttribute("aria-label", `Ask about purchasing ${productName} for ${price} ${currency}`);
-    if (config.purchaseUrl && /^https:\/\//i.test(config.purchaseUrl)) {
-      buyButton.href = config.purchaseUrl;
-      buyButton.target = "_blank";
-      buyButton.rel = "noopener noreferrer";
-      buyButton.setAttribute("aria-label", `Buy ${productName} for ${price} ${currency}`);
-      if (checkoutNote) checkoutNote.textContent = "Digital product · Secure purchase through the Market Mind shop.";
-    } else {
-      const email = config.contactEmail || "krichenem@gmail.com";
-      buyButton.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent("Purchase enquiry: " + productName)}&body=${encodeURIComponent("Hello Market Mind,\n\nI would like to purchase " + productName + " (" + price + " " + currency + "). Please share the purchase link.\n\nThank you.")}`;
-      if (checkoutNote) checkoutNote.textContent = "Digital product · The direct Converty checkout link will be added here before launch.";
-    }
-  }
-
-  // Contact details are centrally configurable.
-  const email = config.contactEmail || "krichenem@gmail.com";
-  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-    if (link.href.includes("krichenem@gmail.com")) {
-      const target = new URL(link.href);
-      target.protocol = "mailto:";
-      target.pathname = email;
-      link.href = target.href;
-    }
-  });
-  const phone = config.phoneLink || "+21652961064";
-  document.querySelectorAll('a[href^="tel:"]').forEach((link) => { link.href = `tel:${phone}`; });
+(function(){
+"use strict";
+var config=window.MARKET_MIND_CONFIG||{};
+var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var header=document.querySelector(".site-header"),toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".primary-nav"),progress=document.getElementById("page-progress-bar");
+var year=document.getElementById("current-year");if(year)year.textContent=String(new Date().getFullYear());
+if(toggle&&nav){toggle.addEventListener("click",function(){var open=toggle.getAttribute("aria-expanded")==="true";toggle.setAttribute("aria-expanded",String(!open));toggle.setAttribute("aria-label",open?"Open navigation":"Close navigation");nav.classList.toggle("nav-open",!open);document.body.classList.toggle("menu-is-open",!open)});nav.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","Open navigation");nav.classList.remove("nav-open");document.body.classList.remove("menu-is-open")})})}
+function scrollUpdate(){var y=window.scrollY||document.documentElement.scrollTop,max=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.transform="scaleX("+(max>0?y/max:0)+")";if(header)header.classList.toggle("header-scrolled",y>24);var p=document.querySelector("[data-parallax]");if(p&&!reduceMotion&&y<window.innerHeight*1.4)p.style.setProperty("--parallax-y",(y*.08).toFixed(1)+"px")}
+window.addEventListener("scroll",scrollUpdate,{passive:true});scrollUpdate();
+var revealNodes=document.querySelectorAll(".reveal,[data-reveal],.method-step,.case-card,.insight-card,.service-row");
+if("IntersectionObserver"in window&&!reduceMotion){var observer=new IntersectionObserver(function(entries,obs){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-visible");obs.unobserve(entry.target)}})},{threshold:.12,rootMargin:"0px 0px -4% 0px"});revealNodes.forEach(function(el,i){el.style.setProperty("--reveal-delay",Math.min(i%5,4)*70+"ms");observer.observe(el)})}else revealNodes.forEach(function(el){el.classList.add("is-visible")});
+document.querySelectorAll("[data-service]").forEach(function(link){link.addEventListener("click",function(){try{sessionStorage.setItem("marketMindSelectedService",link.getAttribute("data-service")||"")}catch(e){}})});
+var topic=document.getElementById("contact-topic");if(topic){try{var picked=sessionStorage.getItem("marketMindSelectedService");var opts=Array.prototype.map.call(topic.options,function(o){return o.value});var mapping={"Market Mind Scan":"Market intelligence","Mind Lab":"Consumer research","Position":"Brand positioning","Market Move":"Go-to-market strategy","Mind On Call":"Ongoing strategic advisory"};picked=mapping[picked]||picked;if(picked&&opts.indexOf(picked)>=0)topic.value=picked;sessionStorage.removeItem("marketMindSelectedService")}catch(e){}}
+var form=document.getElementById("contact-form");if(form){form.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(form),name=String(d.get("name")||"").trim(),email=String(d.get("email")||"").trim(),company=String(d.get("company")||"").trim(),selectedTopic=String(d.get("topic")||"").trim(),message=String(d.get("message")||"").trim();var body=["Hello Market Mind,","","I'd like to discuss a strategic challenge.","","Name: "+name,"Email: "+email,"Company / project: "+(company||"Not specified"),"Topic: "+selectedTopic,"","Context:",message,"","Sent from the Market Mind website."].join("\n"),subject="Market Mind enquiry — "+selectedTopic;if(config.contactFormEndpoint){var note=document.getElementById("form-note");fetch(config.contactFormEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:name,email:email,company:company,topic:selectedTopic,message:message})}).then(function(r){if(!r.ok)throw new Error("Submission failed");form.reset();if(note)note.textContent="Thank you. Your message has been submitted."}).catch(function(){window.location.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)})}else{window.location.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)}})}
+var cta=document.getElementById("playbook-cta"),status=document.getElementById("checkout-status"),note=document.getElementById("checkout-note");if(cta&&!config.purchaseUrl){cta.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent("Launch Before You Stock — early access");if(status)status.textContent="Early access by request";if(note)note.textContent="Payment is not live yet. Add your real hosted checkout URL in site-config.js to activate direct purchase."}else if(cta&&config.purchaseUrl){cta.href=config.purchaseUrl;cta.target="_blank";cta.rel="noopener noreferrer";cta.innerHTML="Get the playbook <span aria-hidden=\"true\">↗</span>";if(status)status.textContent="Available now · secure checkout";if(note)note.textContent="Secure checkout opens in a new tab. Digital delivery is handled by the connected store."}
+document.querySelectorAll("[data-filter]").forEach(function(btn){btn.addEventListener("click",function(){var f=btn.getAttribute("data-filter")||"all";document.querySelectorAll("[data-filter]").forEach(function(b){b.setAttribute("aria-pressed",String(b===btn))});document.querySelectorAll(".library-card[data-category]").forEach(function(card){var cats=(card.getAttribute("data-category")||"").split(/\s+/);card.hidden=f!=="all"&&cats.indexOf(f)===-1})})});
+document.querySelectorAll(".faq-question").forEach(function(btn){btn.addEventListener("click",function(){var expanded=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!expanded));var ans=document.getElementById(btn.getAttribute("aria-controls"));if(ans)ans.hidden=expanded;var plus=btn.querySelector("span:last-child");if(plus)plus.textContent=expanded?"+":"−"})});
 })();

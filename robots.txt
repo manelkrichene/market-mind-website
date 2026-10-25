@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://market-mind-website.krichenem.workers.dev/sitemap.xml
