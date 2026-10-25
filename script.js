@@ -6,6 +6,27 @@ var header=document.querySelector(".site-header"),toggle=document.querySelector(
 var year=document.getElementById("current-year");if(year)year.textContent=String(new Date().getFullYear());
 document.querySelectorAll("[data-booking-link]").forEach(function(a){if(config.bookingUrl)a.href=config.bookingUrl;a.target="_blank";a.rel="noopener noreferrer"});
 document.querySelectorAll("[data-free-chapter-link]").forEach(function(a){if(config.freeChapterUrl)a.href=config.freeChapterUrl;a.target="_blank";a.rel="noopener noreferrer"});
+var leadForm=document.getElementById("lead-magnet-form");
+if(leadForm){
+ leadForm.addEventListener("submit",function(event){
+  event.preventDefault();
+  if(!leadForm.reportValidity())return;
+  var trap=leadForm.querySelector('[name="_gotcha"]');
+  if(trap&&trap.value)return;
+  var submit=leadForm.querySelector('[type="submit"]');
+  var success=document.getElementById("lead-success");
+  var error=document.getElementById("lead-error");
+  var claim=document.getElementById("lead-claim");
+  var payload={};new FormData(leadForm).forEach(function(value,key){payload[key]=value});
+  if(submit){submit.disabled=true;submit.textContent="Submitting your details…"}
+  if(success)success.hidden=true;if(error)error.hidden=true;if(claim)claim.hidden=true;
+  fetch(leadForm.action,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(payload)})
+   .then(function(response){if(!response.ok)throw new Error("Submission failed");if(success)success.hidden=false;if(claim)claim.hidden=false;leadForm.querySelectorAll("input,button").forEach(function(el){el.disabled=true});if(claim)claim.scrollIntoView({behavior:reduceMotion?"auto":"smooth",block:"nearest"})})
+   .catch(function(){if(error)error.hidden=false})
+   .finally(function(){if(submit&&!claim.hidden){submit.textContent="Details submitted"}else if(submit){submit.disabled=false;submit.innerHTML='Unlock the free chapter <span aria-hidden="true">↗</span>'}});
+ });
+}
+
 if(toggle&&nav){toggle.addEventListener("click",function(){var open=toggle.getAttribute("aria-expanded")==="true";toggle.setAttribute("aria-expanded",String(!open));toggle.setAttribute("aria-label",open?"Open navigation":"Close navigation");nav.classList.toggle("nav-open",!open);document.body.classList.toggle("menu-is-open",!open)});nav.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","Open navigation");nav.classList.remove("nav-open");document.body.classList.remove("menu-is-open")})})}
 function scrollUpdate(){var y=window.scrollY||document.documentElement.scrollTop,max=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.transform="scaleX("+(max>0?y/max:0)+")";if(header)header.classList.toggle("header-scrolled",y>24);var p=document.querySelector("[data-parallax]");if(p&&!reduceMotion&&y<window.innerHeight*1.4)p.style.setProperty("--parallax-y",(y*.08).toFixed(1)+"px")}
 window.addEventListener("scroll",scrollUpdate,{passive:true});scrollUpdate();
