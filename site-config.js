@@ -7,11 +7,11 @@ window.MARKET_MIND_CONFIG = {
   instagramUrl: "https://www.instagram.com/market_mind_consultancy/",
   facebookUrl: "https://www.facebook.com/profile.php?id=61594581595119",
   xUrl: "",
-  bookingUrl: "",
-  contactFormEndpoint: "",
+  bookingUrl: "https://calendly.com/krichenem",
+  contactFormEndpoint: "https://formspree.io/f/mkjjodlo",
   productName: "Market Mind™ | Launch Before You Stock",
   productPrice: 40,
   currency: "USD",
-  paymentProvider: "Lemon Squeezy",
-  purchaseUrl: ""
+  paymentProvider: "Gumroad",
+  purchaseUrl: "" // Set only to the permanent product-specific Gumroad URL
 };
