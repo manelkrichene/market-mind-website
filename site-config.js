@@ -13,5 +13,5 @@ window.MARKET_MIND_CONFIG = {
   productPrice: 40,
   currency: "USD",
   paymentProvider: "Gumroad",
-  purchaseUrl: "" // Set only to the permanent product-specific Gumroad URL
+  purchaseUrl: "https://krichen7.gumroad.com/l/marketmind"
 };
