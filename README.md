@@ -1,35 +1,26 @@
-# Market Mind — Premium Website V2
+# Market Mind Website
 
-A responsive, animated editorial website concept for Market Mind Strategic Marketing Consultancy.
+The repository contains the static Market Mind V2 website.
 
-## What's included
-- `index.html` — homepage content and structure
-- `styles.css` — responsive art direction and animation system
-- `script.js` — mobile navigation, reveal animations, subtle hero parallax, configurable product CTA
-- `site-config.js` — easy edits for contact email, phone, product price, currency and Converty checkout URL
-- `assets/market-mind-logo.webp` — cropped/optimized version of the official supplied logo
-- `assets/launch-before-you-stock.webp` — optimized version of the supplied e-book cover
-- `assets/favicon.svg` — small site icon
-- `api/converty/callback.js` — placeholder only, not an active OAuth integration
+## Website files
+- `index.html` — page content and layout
+- `styles.css` — styling and responsive layouts
+- `script.js` — interactions and animations
+- `site-config.js` — contact and product settings
+- `assets/market-mind-logo.png` — brand logo
+- `assets/cover-page.jpg` — Launch Before You Stock cover image
+- `assets/favicon.svg` — browser icon
 
-## Preview
-Open `index.html` in a modern browser. For best local testing, serve this folder with a static local server, or deploy it to Vercel.
+## Deploy on Cloudflare Pages
+This is a plain static HTML website. It does not need Wrangler, a Node build, a Worker, or a server-side API.
 
-## Updating product checkout
-Open `site-config.js` and replace the empty `purchaseUrl` with the real HTTPS checkout URL from the Market Mind product in Converty. The purchase button currently falls back to a pre-filled email enquiry; it does not pretend to process a payment.
+- Framework preset: **None**
+- Build command: `exit 0`
+- Build output directory: `.`
+- Root directory: leave blank
+- Production branch: `main`
 
-## Updating contact details
-Edit `contactEmail`, `phoneDisplay`, and `phoneLink` in `site-config.js`.
+Do not enter a Worker deploy command such as `npx wrangler preview`. Create a **Pages** project and publish the static files from this repository.
 
-## Deploy as a separate preview
-Import this project / branch into Vercel to generate a preview URL. Keep the first version on `main` untouched until you decide which direction to use.
-
-## Before public launch
-- Add the direct Converty checkout URL to `site-config.js` after testing it.
-- Verify the actual digital-download delivery flow in Converty.
-- Replace/confirm final privacy/legal pages and any tracking disclosures.
-- Verify every contact detail, social URL and service description.
-- The logo supplied in the Library is used; no client testimonials or performance claims are invented.
-
-## Converty OAuth
-`api/converty/callback.js` is intentionally a 501 placeholder. Do not use it as an active OAuth redirect until Converty's authorization URL, redirect requirements, state validation and token endpoint are confirmed and implemented.
+## Configuration
+Contact details and product checkout settings are in `site-config.js`. The checkout URL is currently blank and should be set only once the real checkout URL is available.
