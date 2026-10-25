@@ -18,7 +18,7 @@ if(managedContact&&managedContact.hasAttribute("data-formspree-managed")){
  managedContact.addEventListener("submit",function(event){
   event.preventDefault();if(!managedContact.reportValidity())return;
   var trap=managedContact.querySelector('[name="_gotcha"]');if(trap&&trap.value)return;
-  var submit=managedContact.querySelector('[type="submit"]'),success=document.querySelector("#contact-form ~ .form-status-success"),error=document.querySelector("#contact-form ~ .form-status-error");
+  var submit=managedContact.querySelector('[type="submit"]'),success=managedContact.parentElement.querySelector(".form-status-success"),error=managedContact.parentElement.querySelector(".form-status-error");
   var payload={};new FormData(managedContact).forEach(function(value,key){payload[key]=value});
   if(submit){submit.disabled=true;submit.textContent="Sending enquiry…"}
   if(error)error.style.display="none";if(success)success.style.display="none";
