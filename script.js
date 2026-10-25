@@ -13,6 +13,36 @@ if("IntersectionObserver"in window&&!reduceMotion){var observer=new Intersection
 document.querySelectorAll("[data-service]").forEach(function(link){link.addEventListener("click",function(){try{sessionStorage.setItem("marketMindSelectedService",link.getAttribute("data-service")||"")}catch(e){}})});
 var topic=document.getElementById("contact-topic");if(topic){try{var picked=sessionStorage.getItem("marketMindSelectedService");var opts=Array.prototype.map.call(topic.options,function(o){return o.value});var mapping={"Market Mind Scan":"Market intelligence","Mind Lab":"Consumer research","Position":"Brand positioning","Market Move":"Go-to-market strategy","Mind On Call":"Ongoing strategic advisory"};picked=mapping[picked]||picked;if(picked&&opts.indexOf(picked)>=0)topic.value=picked;sessionStorage.removeItem("marketMindSelectedService")}catch(e){}}
 var form=document.getElementById("contact-form");if(form&&!form.hasAttribute("data-formspree-managed")){form.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(form),name=String(d.get("name")||"").trim(),email=String(d.get("email")||"").trim(),company=String(d.get("company")||"").trim(),selectedTopic=String(d.get("topic")||"").trim(),message=String(d.get("message")||"").trim();var body=["Hello Market Mind,","","I'd like to discuss a strategic challenge.","","Name: "+name,"Email: "+email,"Company / project: "+(company||"Not specified"),"Topic: "+selectedTopic,"","Context:",message,"","Sent from the Market Mind website."].join("\n"),subject="Market Mind enquiry — "+selectedTopic;if(config.contactFormEndpoint){var note=document.getElementById("form-note");fetch(config.contactFormEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({name:name,email:email,company:company,topic:selectedTopic,message:message})}).then(function(r){if(!r.ok)throw new Error("Submission failed");form.reset();if(note)note.textContent="Thank you. Your message has been submitted."}).catch(function(){window.location.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)})}else{window.location.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)}})}
+var managedContact=document.getElementById("contact-form");
+if(managedContact&&managedContact.hasAttribute("data-formspree-managed")){
+ managedContact.addEventListener("submit",function(event){
+  event.preventDefault();if(!managedContact.reportValidity())return;
+  var trap=managedContact.querySelector('[name="_gotcha"]');if(trap&&trap.value)return;
+  var submit=managedContact.querySelector('[type="submit"]'),success=document.querySelector("#contact-form ~ .form-status-success"),error=document.querySelector("#contact-form ~ .form-status-error");
+  var payload={};new FormData(managedContact).forEach(function(value,key){payload[key]=value});
+  if(submit){submit.disabled=true;submit.textContent="Sending enquiry…"}
+  if(error)error.style.display="none";if(success)success.style.display="none";
+  fetch(managedContact.action,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(payload)})
+   .then(function(response){if(!response.ok)throw new Error("Form submission failed");managedContact.reset();if(success)success.style.display="block";var note=document.getElementById("form-note");if(note)note.textContent="Thank you. Your enquiry has been sent. We will reply to the email address you provided."})
+   .catch(function(){if(error)error.style.display="block";else window.location.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent("Market Mind website enquiry");})
+   .finally(function(){if(submit){submit.disabled=false;submit.innerHTML='Send enquiry <span aria-hidden="true">↗</span>'}});
+ });
+}
+if("IntersectionObserver"in window&&!reduceMotion){
+ var storySteps=Array.prototype.slice.call(document.querySelectorAll(".method-step"));
+ if(storySteps.length){
+  var activeStep=null;
+  var storyObserver=new IntersectionObserver(function(entries){
+   entries.forEach(function(entry){
+    if(entry.isIntersecting){
+     if(activeStep)activeStep.classList.remove("is-current");
+     activeStep=entry.target;activeStep.classList.add("is-current");
+    }
+   });
+  },{rootMargin:"-38% 0px -42% 0px",threshold:0});
+  storySteps.forEach(function(step){storyObserver.observe(step)});
+ }
+}
 var cta=document.getElementById("playbook-cta"),status=document.getElementById("checkout-status"),note=document.getElementById("checkout-note");if(cta&&!config.purchaseUrl){cta.href="mailto:"+(config.contactEmail||"krichenem@gmail.com")+"?subject="+encodeURIComponent("Launch Before You Stock — early access");if(status)status.textContent="Gumroad product link pending";if(note)note.textContent="Add the permanent product-specific Gumroad URL in site-config.js to activate checkout. The generic checkout URL provided is not used because it may not identify this product."}else if(cta&&config.purchaseUrl){cta.href=config.purchaseUrl;cta.target="_blank";cta.rel="noopener noreferrer";cta.innerHTML="Get the playbook <span aria-hidden=\"true\">↗</span>";if(status)status.textContent="Available now · secure checkout";if(note)note.textContent="Secure checkout opens in a new tab. Digital delivery is handled by the connected store."}
 document.querySelectorAll("[data-filter]").forEach(function(btn){btn.addEventListener("click",function(){var f=btn.getAttribute("data-filter")||"all";document.querySelectorAll("[data-filter]").forEach(function(b){b.setAttribute("aria-pressed",String(b===btn))});document.querySelectorAll(".library-card[data-category]").forEach(function(card){var cats=(card.getAttribute("data-category")||"").split(/\s+/);card.hidden=f!=="all"&&cats.indexOf(f)===-1})})});
 document.querySelectorAll(".faq-question").forEach(function(btn){btn.addEventListener("click",function(){var expanded=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!expanded));var ans=document.getElementById(btn.getAttribute("aria-controls"));if(ans)ans.hidden=expanded;var plus=btn.querySelector("span:last-child");if(plus)plus.textContent=expanded?"+":"−"})});
