@@ -80,3 +80,10 @@ The matcha case describes a research question and methods, not unverified conclu
 - Test desktop/mobile navigation, the enquiry form, the lead-magnet flow, FAQ controls, filters and reduced-motion behavior.
 - Connect and test real scheduling, form and payment services before saying they are live.
 - Review privacy/legal notices against actual business practices and applicable law. These pages are practical starting points, not legal advice.
+
+
+## Market Mind V2 identity (2026)
+The site now follows the approved V2 identity: Dark Navy `#1E2A38`, Warm Cream `#F6F1EA`, Terracotta `#C86E5A`, and Light Peach `#EBA894`. Montserrat is used for display and text. The standalone approved icon is stored at `assets/market-mind-mark.webp`; the concise implementation guide is `brand-guidelines-v2.md`. The homepage hero and shared components retain motion while respecting reduced-motion preferences. X: https://x.com/marketmindcons.
+
+## Hosting note
+The existing public site is the Cloudflare Worker at `https://market-mind-website.krichenem.workers.dev/`. Keep this production target and the `main` branch unchanged unless a separate migration to Vercel is explicitly approved and configured. No Vercel project or deployment credentials are available through the connected tools in this session.
