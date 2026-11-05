@@ -20,8 +20,27 @@ Keep the existing Worker, public URL, repository integration and production bran
 - robots.txt / sitemap.xml: search engine discovery
 - assets/: logo, cover image and favicon
 
-## Design
-Colors: background #101A2F, deep blue #1F3A70, mid blue #34558B, primary text #FAF8F6, secondary text #E3EBFA and accent #FF5722. Motion respects the browser's reduced-motion preference.
+## Design — Premium V2 (2026)
+The current identity follows the supplied Market Mind Brand Guidelines 2026:
+- Dark Navy: #1E2A38
+- Warm Cream: #F6F1EA
+- Terracotta: #C86E5A
+- Light Peach: #EBA894
+- Typography: Montserrat for display and reading; bold display headlines only.
+- Graphic device: one vertical Terracotta decision line, separating evidence/context from the choice/action.
+- The logo artwork is a finished mark: do not stretch, recolour, rotate, shadow or rebuild it. Use the icon on Warm Cream/white and reverse only on Dark Navy where a reversed asset is supplied.
+- The visual balance should remain approximately 85% Dark Navy and Warm Cream; keep Terracotta below 5% of a surface.
+- Motion is restrained, purposeful and always respects prefers-reduced-motion.
+
+## Social channels
+- LinkedIn: https://www.linkedin.com/company/market-mind-marketing/
+- Instagram: https://www.instagram.com/market_mind_consultancy/
+- Facebook: https://www.facebook.com/profile.php?id=61594581595119
+- X: https://x.com/marketmindcons
+
+## Brand assets
+- assets/market-mind-icon.webp: new standalone icon supplied for Premium V2.
+- assets/Market-Mind-Brand-Guidelines-2026.md: implementation summary of the supplied brand book.
 
 ## Contact form
 The homepage contact form uses custom vanilla-JavaScript AJAX submission to Formspree:
