@@ -316,3 +316,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+
+.footer-wordmark{display:inline-flex;flex-direction:column;gap:7px;color:var(--cream);font:700 19px/1 var(--display);letter-spacing:.12em}
+.footer-wordmark span{color:var(--muted-light);font:600 8px/1.4 var(--body);letter-spacing:.13em}
+.footer-wordmark:hover{color:var(--peach)}
+@media(max-width:760px){.footer-wordmark{font-size:17px}}
