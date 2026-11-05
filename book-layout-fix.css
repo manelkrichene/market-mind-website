@@ -50,3 +50,19 @@
   background: #EEE7DE;
   box-shadow: 0 4px 14px rgba(30, 42, 56, .08);
 }
+
+/* Replace the legacy playbook code with the approved editorial title. */
+.book-side-note .mono {
+  font-size: 0 !important;
+  letter-spacing: 0 !important;
+}
+.book-side-note .mono::after {
+  content: "THE LAUNCH FIELD GUIDE";
+  display: inline-block;
+  color: #934B3F;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.5;
+}
