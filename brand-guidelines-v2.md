@@ -21,7 +21,7 @@ Dark Navy and Warm Cream should make up about 85% of a surface. Terracotta stays
 The Decision Line: one vertical line, always Terracotta, always alone. Evidence and context sit on one side; the choice or action on the other.
 
 ## Logo
-Use the supplied standalone icon for restricted spaces such as social avatars, favicons and app icons. Keep clear space equal to the height of the M in the wordmark on all sides. Never stretch, squash, rotate, recolour, shadow, rebuild or place the mark on busy imagery. Minimum icon size: 24px on screen and 8mm in print.
+Use the supplied full lockup (`assets/Market Mind New Logo.jpg`) for the website header, footer and primary brand applications. Use the standalone icon (`assets/market-mind-mark.webp`) only in restricted spaces such as social avatars, favicons and app icons. Keep clear space equal to the height of the M in the wordmark on all sides. Never stretch, squash, rotate, recolour, shadow, rebuild or place the mark on busy imagery. Minimum icon size: 24px on screen and 8mm in print.
 
 ## Voice
 Speak like a senior strategist. Prefer clear, commercially grounded language over generic claims such as "360 solutions" or "revolutionary ROI". Explain what the work helps a business decide and how progress is measured.
