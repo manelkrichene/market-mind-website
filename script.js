@@ -1,6 +1,11 @@
 (function(){
 "use strict";
 var config=window.MARKET_MIND_CONFIG||{};
+/* Apply the approved standalone brand mark consistently across every page. */
+document.querySelectorAll(".brand img").forEach(function(img){img.src="/assets/market-mind-mark.webp";img.alt="Market Mind icon"});
+document.querySelectorAll("link[rel~='icon']").forEach(function(link){link.href="/assets/market-mind-mark.webp";link.type="image/webp"});
+var themeMeta=document.querySelector('meta[name="theme-color"]');if(themeMeta)themeMeta.content="#1E2A38";
+document.querySelectorAll(".footer-bottom .social-links").forEach(function(list){if(!list.querySelector('a[href="https://x.com/marketmindcons"]')){var x=document.createElement("a");x.href="https://x.com/marketmindcons";x.target="_blank";x.rel="noopener noreferrer";x.textContent="X ↗";list.appendChild(x)}});
 var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var header=document.querySelector(".site-header"),toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".primary-nav"),progress=document.getElementById("page-progress-bar");
 var year=document.getElementById("current-year");if(year)year.textContent=String(new Date().getFullYear());
