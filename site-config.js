@@ -6,7 +6,7 @@ window.MARKET_MIND_CONFIG = {
   linkedinUrl: "https://www.linkedin.com/company/market-mind-marketing/",
   instagramUrl: "https://www.instagram.com/market_mind_consultancy/",
   facebookUrl: "https://www.facebook.com/profile.php?id=61594581595119",
-  xUrl: "",
+  xUrl: "https://x.com/marketmindcons",
   bookingUrl: "https://calendly.com/krichenem",
   contactFormEndpoint: "https://formspree.io/f/mkjjodlo",
   productName: "Market Mind™ | Launch Before You Stock",
