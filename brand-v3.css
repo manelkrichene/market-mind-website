@@ -527,3 +527,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .insight-card p{color:var(--muted);font-size:12px}
 .insight-card .arrow-link{margin-top:auto;padding-top:8px}
 @media(max-width:760px){.insight-grid{grid-template-columns:1fr;gap:22px}.insight-art{min-height:125px}}
+
+.method .button span,.work-preview .button span,.field-notes-social .button span,.contact .button span{color:var(--peach)}
