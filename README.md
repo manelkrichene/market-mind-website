@@ -3,9 +3,7 @@
 A static, dark editorial website for Market Mind, built with HTML, CSS and JavaScript.
 
 ## Existing deployment
-Public address: https://market-mind-website.krichenem.workers.dev/
-
-Keep the existing Worker, public URL, repository integration and production branch unchanged. Updates are committed to main, the production branch previously connected to the Worker. Do not create a second website or change the Worker name just to publish improvements.
+The site is maintained in this repository and deployed through the connected Vercel project `market-mind-website`. The former Cloudflare Worker URL remains a legacy public address; the Vercel project has its own production aliases. Updates are committed to `main` and trigger Vercel production deployments.
 
 ## Structure
 - index.html: homepage, method, selected work, playbook, insights, social links and enquiry form
