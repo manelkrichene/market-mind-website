@@ -5,6 +5,20 @@ set -euo pipefail
 # to the extracted production files (not the repository wrapper directory).
 unzip -oq market-mind-website-premium-v2.zip -d .
 
+# Give the playbook cover a useful editorial label on both public pages.
+python3 - <<'PY'
+from pathlib import Path
+
+for page in (
+    Path("market-mind-website/index.html"),
+    Path("market-mind-website/playbook/index.html"),
+):
+    html = page.read_text()
+    if "MM / PLAYBOOK 001" not in html:
+        raise SystemExit(f"Expected playbook label missing from {page}")
+    page.write_text(html.replace("MM / PLAYBOOK 001", "THE LAUNCH FIELD GUIDE"))
+PY
+
 cat >> market-mind-website/styles.css <<'CSS'
 
 /* PLAYBOOK COVER FIX — supporting copy must never sit behind the ebook. */
