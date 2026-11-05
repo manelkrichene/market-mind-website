@@ -285,3 +285,51 @@ h1 em,.display-heading em{font-family:var(--display);font-style:italic;font-weig
 .brand img{width:36px;height:36px}
 }
 @media(prefers-reduced-motion:reduce){.brandmark-stage img{animation:none}}
+
+
+/* MARKET MIND — BRAND IDENTITY 2026 / PREMIUM V2 */
+:root{
+  --ink:#1E2A38;
+  --blue:#263747;
+  --mid:#35485A;
+  --paper:#F6F1EA;
+  --ice:#F6F1EA;
+  --orange:#C86E5A;
+  --muted:#BDB6AD;
+  --line:rgba(246,241,234,.16);
+  --strong:rgba(246,241,234,.30);
+  --display:"Montserrat","Segoe UI",sans-serif;
+  --body:"Montserrat","Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+body{background:var(--ink);color:var(--paper);font-family:var(--body)}
+h1,h2,h3,.brand-wordmark{font-family:"Montserrat","Segoe UI",sans-serif}
+h1,h2{font-weight:700;letter-spacing:-.055em}
+h1 em,.display-heading em{font-family:"Montserrat","Segoe UI",sans-serif;font-style:italic;font-weight:800;color:var(--orange);letter-spacing:-.055em}
+.eyebrow,.hero-kicker,.section-label,.mono{letter-spacing:.11em}
+.site-header.header-scrolled{background:rgba(30,42,56,.94);border-color:rgba(246,241,234,.16)}
+.button-primary{background:var(--orange);color:#fff}
+.button-primary:hover{background:#D77D69;box-shadow:0 12px 28px rgba(200,110,90,.18)}
+.button-outline:hover,.primary-nav a:hover,.social-links a:hover{color:#EBA894}
+.hero-art{border-color:rgba(30,42,56,.12);background:var(--paper);color:var(--ink)}
+.hero-art:before{background-image:linear-gradient(rgba(30,42,56,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(30,42,56,.045) 1px,transparent 1px)}
+.hero-art .mono,.hero-art .art-caption,.hero-art .live-label{color:#526071}
+.orbit{border-color:rgba(30,42,56,.18)}
+.orbit-a{border-color:rgba(200,110,90,.48)}
+.orbit-node{background:#1E2A38;color:#F6F1EA;border-color:rgba(30,42,56,.2);box-shadow:0 8px 20px rgba(30,42,56,.12)}
+.orb-core{background:#1E2A38;color:#F6F1EA;border-color:rgba(200,110,90,.55)}
+.orb-core small{color:#EBA894}
+.hero-art .art-caption{border-top:1px solid rgba(30,42,56,.12)}
+.section-number,.result-label,.outcome-index{color:var(--orange)}
+.manifesto-marquee{border-color:rgba(246,241,234,.16)}
+.brand img{width:42px;height:42px;object-fit:contain}
+.footer-brand img{width:40px;height:40px}
+a,button{ -webkit-tap-highlight-color:transparent }
+:focus-visible{outline-color:#EBA894}
+@media(max-width:780px){
+  .site-header{background:rgba(30,42,56,.96)}
+  .hero-art{min-height:390px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
