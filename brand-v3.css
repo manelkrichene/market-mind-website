@@ -505,3 +505,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .field-notes-social .eyebrow{color:var(--peach)!important}
 .gate-line i:last-child{background:var(--peach);border-color:var(--peach);color:var(--navy)}
 .social-resource .eyebrow{color:var(--peach)!important}
+
+/* Contrast details on the dark contact panel and warm playbook panel */
+.contact .section-label>span:not(.section-number):not(.label-rule){color:var(--muted-dark)}
+.playbook-copy .display-heading em,.lead-magnet-copy .display-heading em{color:var(--terra-text)}
+.playbook-stamp{color:var(--terra-text)}
