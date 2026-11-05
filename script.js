@@ -6,7 +6,7 @@ document.querySelectorAll(".brand img").forEach(function(img){img.src="/assets/M
 var fontLink=document.querySelector('link[href*="fonts.googleapis.com/css2"]');if(!fontLink||!fontLink.href.includes("family=Montserrat")){var mmFont=document.createElement("link");mmFont.rel="stylesheet";mmFont.href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap";document.head.appendChild(mmFont)}
 document.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"]').forEach(function(meta){meta.content=(window.MARKET_MIND_CONFIG&&window.MARKET_MIND_CONFIG.siteUrl||"")+"/assets/Market%20Mind%20New%20Logo.jpg"});
 document.querySelectorAll("link[rel~='icon']").forEach(function(link){link.href="/assets/Market%20Mind%20New%20Logo.jpg";link.type="image/webp"});
-var themeMeta=document.querySelector('meta[name="theme-color"]');if(themeMeta)themeMeta.content="#1E2A38";
+var themeMeta=document.querySelector('meta[name="theme-color"]');if(themeMeta)themeMeta.content="#F6F1EA";
 document.querySelectorAll(".footer-bottom .social-links").forEach(function(list){if(!list.querySelector('a[href="https://x.com/marketmindcons"]')){var x=document.createElement("a");x.href="https://x.com/marketmindcons";x.target="_blank";x.rel="noopener noreferrer";x.textContent="X ↗";list.appendChild(x)}});
 var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduceMotion)document.documentElement.classList.add("js-motion");
 var header=document.querySelector(".site-header"),toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".primary-nav"),progress=document.getElementById("page-progress-bar");
