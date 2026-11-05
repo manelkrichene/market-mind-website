@@ -333,3 +333,5 @@ a,button{ -webkit-tap-highlight-color:transparent }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+.orb-core:before{content:"";display:block;width:58px;height:58px;margin-bottom:8px;background:url("/assets/market-mind-mark.webp") center/contain no-repeat;filter:drop-shadow(0 2px 8px rgba(200,110,90,.12))}.core-cross{display:none}
