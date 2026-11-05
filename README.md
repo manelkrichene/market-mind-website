@@ -87,3 +87,7 @@ The site now follows the approved V2 identity: Dark Navy `#1E2A38`, Warm Cream `
 
 ## Hosting note
 The existing public site is the Cloudflare Worker at `https://market-mind-website.krichenem.workers.dev/`. Keep this production target and the `main` branch unchanged unless a separate migration to Vercel is explicitly approved and configured. No Vercel project or deployment credentials are available through the connected tools in this session.
+
+
+## Premium V2 visual system
+The site applies the 2026 Brand Guidelines: Warm Cream `#F6F1EA` as the primary canvas, Dark Navy `#1E2A38` for authority and contrast, Terracotta `#C86E5A` as a restrained accent, and Light Peach `#EBA894` as a secondary accent. Montserrat is used for display and text. The homepage hero uses the supplied standalone illustrated mark and the Decision Line to express the brand idea. Visual treatment is editorial and typographic rather than dashboard-like or gradient-led. Motion is limited to scroll reveals and small interaction feedback, with reduced-motion support.
