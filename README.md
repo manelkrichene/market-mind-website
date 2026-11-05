@@ -37,8 +37,9 @@ The current identity follows the supplied Market Mind Brand Guidelines 2026:
 - X: https://x.com/marketmindcons
 
 ## Brand assets
-- assets/market-mind-icon.webp: new standalone icon supplied for Premium V2.
-- assets/Market-Mind-Brand-Guidelines-2026.md: implementation summary of the supplied brand book.
+- `assets/Market Mind New Logo.jpg`: approved full logo lockup.
+- `assets/market-mind-mark.webp`: standalone icon for favicon and restricted spaces.
+- `brand-guidelines-v2.md`: concise implementation reference for the approved 2026 brand book.
 
 ## Contact form
 The homepage contact form uses custom vanilla-JavaScript AJAX submission to Formspree:
@@ -81,11 +82,11 @@ The matcha case describes a research question and methods, not unverified conclu
 
 
 ## Market Mind V2 identity (2026)
-The site now follows the approved V2 identity: Dark Navy `#1E2A38`, Warm Cream `#F6F1EA`, Terracotta `#C86E5A`, and Light Peach `#EBA894`. Montserrat is used for display and text. The standalone approved icon is stored at `assets/market-mind-mark.webp`; the concise implementation guide is `brand-guidelines-v2.md`. The homepage hero and shared components retain motion while respecting reduced-motion preferences. X: https://x.com/marketmindcons.
+The site follows the approved identity: Dark Navy `#1E2A38`, Warm Cream `#F6F1EA`, Terracotta `#C86E5A`, and Light Peach `#EBA894`. Montserrat is used for display and text, with bold display reserved for headlines and key numbers from 32px upward. The approved full lockup is `assets/Market Mind New Logo.jpg`; the standalone icon is `assets/market-mind-mark.webp`. X: https://x.com/marketmindcons.
 
-## Hosting note
-The existing public site is the Cloudflare Worker at `https://market-mind-website.krichenem.workers.dev/`. Keep this production target and the `main` branch unchanged unless a separate migration to Vercel is explicitly approved and configured. No Vercel project or deployment credentials are available through the connected tools in this session.
+## Hosting and deployment
+The repository is connected to the Vercel project `market-mind-website`. GitHub commits to `main` trigger Vercel production-target deployments. The project has SSO protection enabled on Vercel-managed aliases. The historic Cloudflare Worker URL `https://market-mind-website.krichenem.workers.dev/` remains the canonical URL in `site-config.js` and page metadata; a Vercel deployment does not itself update that separate Cloudflare Worker. Do not describe the Cloudflare URL as updated unless a Cloudflare deployment is separately performed and verified.
 
 
 ## Premium V2 visual system
-The site applies the 2026 Brand Guidelines: Warm Cream `#F6F1EA` as the primary canvas, Dark Navy `#1E2A38` for authority and contrast, Terracotta `#C86E5A` as a restrained accent, and Light Peach `#EBA894` as a secondary accent. Montserrat is used for display and text. The homepage hero uses the supplied standalone illustrated mark and the Decision Line to express the brand idea. Visual treatment is editorial and typographic rather than dashboard-like or gradient-led. Motion is limited to scroll reveals and small interaction feedback, with reduced-motion support.
+Warm Cream is the primary canvas; Dark Navy carries structure and contrast; Terracotta is a restrained decision accent; Light Peach is secondary. The full logo lockup is used in the site header and footer, with the standalone icon reserved for the favicon. The homepage hero explains the Market / Mind / Move framework using the Decision Line. Motion is restrained, progressive-enhancement safe and respects reduced-motion preferences.
