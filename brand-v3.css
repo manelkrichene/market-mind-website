@@ -498,3 +498,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
  html{scroll-behavior:auto}
  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+/* Final contrast corrections for small labels and reversed surfaces */
+.playbook-copy h2 em,.lead-magnet-copy h2 em{color:var(--terra-text)}
+.contact .section-label .mono{color:var(--muted-dark)}
+.contact .button-primary span,.work-preview .button-primary span,.field-notes-social .button-primary span{color:var(--peach)}
+.field-notes-social .eyebrow{color:var(--peach)!important}
+.gate-line i:last-child{background:var(--peach);border-color:var(--peach);color:var(--navy)}
+.social-resource .eyebrow{color:var(--peach)!important}
