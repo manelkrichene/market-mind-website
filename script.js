@@ -8,7 +8,7 @@ document.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"]'
 document.querySelectorAll("link[rel~='icon']").forEach(function(link){link.href="/assets/market-mind-mark.webp";link.type="image/webp"});
 var themeMeta=document.querySelector('meta[name="theme-color"]');if(themeMeta)themeMeta.content="#1E2A38";
 document.querySelectorAll(".footer-bottom .social-links").forEach(function(list){if(!list.querySelector('a[href="https://x.com/marketmindcons"]')){var x=document.createElement("a");x.href="https://x.com/marketmindcons";x.target="_blank";x.rel="noopener noreferrer";x.textContent="X ↗";list.appendChild(x)}});
-var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduceMotion)document.documentElement.classList.add("js-motion");
 var header=document.querySelector(".site-header"),toggle=document.querySelector(".menu-toggle"),nav=document.querySelector(".primary-nav"),progress=document.getElementById("page-progress-bar");
 var year=document.getElementById("current-year");if(year)year.textContent=String(new Date().getFullYear());
 document.querySelectorAll("[data-booking-link]").forEach(function(a){if(config.bookingUrl)a.href=config.bookingUrl;a.target="_blank";a.rel="noopener noreferrer"});
